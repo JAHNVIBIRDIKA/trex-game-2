@@ -9,6 +9,7 @@ var cloudsGroup, cloudImage;
 var obstaclesGroup, obstacle1, obstacle2, obstacle3, obstacle4, obstacle5, obstacle6;
 
 var score=0;
+var highscore = 0;
 
 var gameOver, restart;
 
@@ -71,8 +72,9 @@ function setup() {
 }
 
 function draw() {
-  background(255);
+  background(180);
   text("Score: "+ score, 500,50);
+  text("highScore: "+highscore,420,50);
   
   if (gameState===PLAY){
     score = score + Math.round(getFrameRate()/60);
@@ -192,6 +194,9 @@ function reset(){
   cloudsGroup.destroyEach();
   
   trex.changeAnimation("running",trex_running);
+  if(highscore<score){
+  highscore=score;
+  }
   
   score = 0;
   
